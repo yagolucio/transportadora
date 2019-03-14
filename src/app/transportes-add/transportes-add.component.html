@@ -1,0 +1,55 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/']">
+      <mat-icon>list</mat-icon>
+    </a>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="transportForm" (ngSubmit)="onFormSubmit(transportForm.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nome" formControlName="nome" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!transportForm.get('nome').valid && transportForm.get('nome').touched">Por favor entre com o
+            Nome</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="CNPJ" formControlName="cnpj" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!transportForm.get('cnpj').valid && transportForm.get('cnpj').touched">Por favor entre com o
+            CNPJ</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Inscrição Estadual" formControlName="inscricaoEstadual"
+          [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!transportForm.get('inscricaoEstadual').valid && transportForm.get('inscricaoEstadual').touched">
+            Por favor entre com a inscriçao estadual</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Latitude" formControlName="latitude" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!transportForm.get('latitude').valid && transportForm.get('latitude').touched">
+            Por favor entre com a latitude</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Longitude" formControlName="longitude" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!transportForm.get('longitude').valid && transportForm.get('longitude').touched">
+            Por favor entre com a longitude</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button type="submit" [disabled]="!transportForm.valid" mat-flat-button color="primary">
+          <mat-icon>Salvar</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
